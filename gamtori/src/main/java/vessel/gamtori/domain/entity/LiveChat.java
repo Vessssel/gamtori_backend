@@ -46,10 +46,11 @@ public class LiveChat extends BaseTimeEntity {
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "id", nullable = false)
 	private long id;
 
 	@NotNull
-	@Column(name = "type", nullable = false, columnDefinition = "CHAR(8)")
+	@Column(name = "type", nullable = false, columnDefinition = "CHAR (8)")
 	@Enumerated(EnumType.STRING)
 	private ChatMessageType type;
 

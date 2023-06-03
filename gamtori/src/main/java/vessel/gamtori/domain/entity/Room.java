@@ -18,6 +18,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicUpdate;
 
+import com.sun.istack.NotNull;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -46,12 +48,15 @@ public class Room extends BaseTimeEntity {
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "id", nullable = false)
 	private long id;
 
+	@NotNull
 	@Column(name = "meet_date", nullable = false)
 	private LocalDateTime meetDate;
 
-	@Column(name = "is_dues", nullable = false, columnDefinition = "CHAR(16)")
+	@NotNull
+	@Column(name = "is_dues", nullable = false, columnDefinition = "CHAR (16)")
 	@Enumerated(EnumType.STRING)
 	private DuesType isDues;
 
@@ -59,8 +64,13 @@ public class Room extends BaseTimeEntity {
 	@ColumnDefault("0")
 	private int dues;
 
+	@NotNull
 	@Column(name = "title", nullable = false, columnDefinition = "VARCHAR (50)")
 	private String title;
+
+	@NotNull
+	@Column(name = "content", nullable = false, columnDefinition = "TEXT")
+	private String content;
 
 	@Column(name = "max_people", nullable = false)
 	private int maxPeople;
@@ -68,6 +78,7 @@ public class Room extends BaseTimeEntity {
 	@Column(name = "current_people", nullable = false)
 	private int currentPeople;
 
+	@NotNull
 	@Column(name = "gender", nullable = false, columnDefinition = "CHAR (16)")
 	@Enumerated(EnumType.STRING)
 	private GenderType gender;
@@ -78,17 +89,20 @@ public class Room extends BaseTimeEntity {
 	@Column(name = "lng", nullable = false)
 	private double lng;
 
-	@Column(name = "status", nullable = false, columnDefinition = "VARCHAR(10)")
+	@NotNull
+	@Column(name = "status", nullable = false, columnDefinition = "VARCHAR (10)")
 	@Enumerated(EnumType.STRING)
 	private StatusType status;
 
 	@Column(name = "is_deleted", nullable = false)
 	private boolean isDeleted;
 
+	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "address_id", nullable = false)
 	private Address address;
 
+	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "category_id", nullable = false)
 	private Category category;

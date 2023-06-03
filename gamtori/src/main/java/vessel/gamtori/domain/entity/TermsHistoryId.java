@@ -6,33 +6,24 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
 /**
  *packageName    : vessel.gamtori.domain.entity
- * fileName       : Age
- * author         : jongseong
+ * fileName       : TermsHistoryId
+ * author         : dongk
  * date           : 2023-06-03
  * description    :
  * ===========================================================
  * DATE              AUTHOR             NOTE
  * -----------------------------------------------------------
- * 2023-06-03        jongseong       최초 생성
+ * 2023-06-03        dongk       최초 생성
  */
 @Embeddable
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Builder
-public class UserAndCategoryId implements Serializable {
+public class TermsHistoryId implements Serializable {
 	@Column(name = "user_id", nullable = false)
 	private long userId;
-	@Column(name = "category_id", nullable = false)
-	private long categoryId;
+
+	@Column(name = "terms_id", nullable = false)
+	private long termsId;
 
 	@Override
 	public boolean equals(Object o) {
@@ -40,12 +31,12 @@ public class UserAndCategoryId implements Serializable {
 			return true;
 		if (o == null || getClass() != o.getClass())
 			return false;
-		UserAndCategoryId that = (UserAndCategoryId)o;
-		return userId == that.userId && categoryId == that.categoryId;
+		TermsHistoryId that = (TermsHistoryId)o;
+		return userId == that.userId && termsId == that.termsId;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(userId, categoryId);
+		return Objects.hash(userId, termsId);
 	}
 }

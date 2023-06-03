@@ -1,5 +1,6 @@
 package vessel.gamtori.domain.entity;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -41,21 +42,24 @@ public class RoomAndUser extends BaseTimeEntity {
 	@NotNull
 	private RoomAndUserId id;
 
+	@Column(name = "is_leader", nullable = false)
 	private boolean isLeader;
 
+	@Column(name = "is_deleted", nullable = false)
 	private boolean isDeleted;
 
+	@Column(name = "is_ban", nullable = false)
 	private boolean isBan;
 
+	@NotNull
 	@MapsId("userId") //기본키이자 외래키로 인식, fk를 pk로 지정.
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
-	@NotNull
 	private User user;
 
+	@NotNull
 	@MapsId("roomId")
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "room_id")
-	@NotNull
 	private Room room;
 }

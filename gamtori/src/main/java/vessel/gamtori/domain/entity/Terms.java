@@ -1,9 +1,15 @@
 package vessel.gamtori.domain.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
+
+import com.sun.istack.NotNull;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -27,14 +33,21 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder
-@Table(name = "user")
+@Table(name = "terms")
 @DynamicUpdate
-public class terms extends BaseTimeEntity {
-	long id;
+public class Terms extends BaseTimeEntity {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false)
+	private long id;
 
-	String name;
+	@NotNull
+	@Column(name = "name", length = 64, nullable = false)
+	private String name;
 
-	String content;
+	@Column(name = "content", columnDefinition = "TEXT", nullable = false)
+	private String content;
 
-	boolean is_required;
+	@Column(name = "is_required", nullable = false)
+	private boolean isRequired;
 }

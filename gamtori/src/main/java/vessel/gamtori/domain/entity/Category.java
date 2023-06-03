@@ -43,10 +43,11 @@ public class Category extends BaseTimeEntity {
 	private long id;
 
 	@NotNull
-	@Column(name = "category", nullable = false)
+	@Column(name = "category", nullable = false, length = 255)
 	private String category;
+
 	@NotNull
-	@Column(name = "category_url", nullable = false)
+	@Column(name = "category_url", nullable = false, length = 255)
 	private String categoryUrl;
 
 	@Column(name = "view_count", nullable = false)

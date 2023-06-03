@@ -31,7 +31,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder
-@Table(name = "user")
+@Table(name = "manner_score_image")
 @DynamicUpdate
 public class MannerScoreImage extends BaseTimeEntity {
 	@Id
@@ -42,6 +42,9 @@ public class MannerScoreImage extends BaseTimeEntity {
 	@Column(name = "score", nullable = false)
 	private int score;
 
-	@Column(name = "is_delete", nullable = false)
+	@Column(name = "image_url", nullable = false, length = 255)
+	private String imageUrl;
+
+	@Column(name = "is_deleted", nullable = false)
 	private boolean isDeleted;
 }

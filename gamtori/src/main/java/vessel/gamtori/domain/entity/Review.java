@@ -45,27 +45,24 @@ public class Review extends BaseTimeEntity {
 	private long id;
 
 	@NotNull
-	@Column(columnDefinition="TEXT", nullable = false)
+	@Column(name = "content", columnDefinition="TEXT", nullable = false)
 	private String content;
 
 	@Column(name = "score", nullable = false)
 	private int score;
 
-	@Column(name = "is_delete", nullable = false)
+	@Column(name = "is_deleted", nullable = false)
 	private boolean isDeleted;
 
-	@JoinColumn(name = "user_id")
 	@ManyToOne(fetch = FetchType.LAZY)
-	@Column(name = "reviewer_id", nullable = false)
+	@JoinColumn(name = "reviewer_id", nullable = false)
 	private User reviewer;
 
-	@JoinColumn(name = "user_id")
 	@ManyToOne(fetch = FetchType.LAZY)
-	@Column(name = "reviewee_id", nullable = false)
+	@JoinColumn(name = "reviewee_id", nullable = false)
 	private User reviewee;
 
-	@JoinColumn(name = "room_id")
 	@ManyToOne(fetch = FetchType.LAZY)
-	@Column(name = "room_id", nullable = false)
+	@JoinColumn(name = "room_id", nullable = false)
 	private Room room;
 }

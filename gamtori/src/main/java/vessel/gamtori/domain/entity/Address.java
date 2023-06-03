@@ -45,18 +45,18 @@ public class Address extends BaseTimeEntity {
 	@NotNull
 	private String si;
 
-	@Column(name="si", length = 64, nullable = false)
+	@Column(name="gugun", length = 64, nullable = false)
 	@NotNull
 	private String gugun;
 
-	@Column(name="si", length = 64, nullable = false)
+	@Column(name="dong", length = 64, nullable = false)
 	@NotNull
 	private String dong;
 
-	@Column(name="si", length = 16, nullable = false)
+	@Column(name="code", length = 16, nullable = false, columnDefinition = "CHAR")
 	@NotNull
 	private String code;
 
-	@Column(name = "is_delete", nullable = false)
+	@Column(name = "is_deleted", nullable = false)
 	private boolean isDeleted;
 }

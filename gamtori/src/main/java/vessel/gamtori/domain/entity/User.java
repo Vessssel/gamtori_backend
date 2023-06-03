@@ -59,11 +59,11 @@ public class User extends BaseTimeEntity {
 	private String nickname;
 
 	@NotNull
-	@Column(name = "phone_number", length = 16, nullable = true)
+	@Column(name = "phone_number", length = 16, nullable = true, columnDefinition = "CHAR")
 	private String phoneNumber;
 
 	@NotNull
-	@Column(name = "profileUrl", length = 255, nullable = false)
+	@Column(name = "profile_url", length = 255, nullable = false)
 	private String profileUrl;
 
 	@NotNull
@@ -81,26 +81,22 @@ public class User extends BaseTimeEntity {
 	private LocalDateTime lastLoginTime;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "manner_score_image_id")
-	@Column(name = "manner_score_image", nullable = false)
+	@JoinColumn(name = "manner_score_image_id", nullable = false)
 	@NotNull
 	private MannerScoreImage mannerScoreImage;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "address_id")
-	@Column(name = "address", nullable = false)
+	@JoinColumn(name = "address_id", nullable = false)
 	@NotNull
 	private Address address;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "age_group_id")
-	@Column(name = "age_group", nullable = false)
+	@JoinColumn(name = "age_group_id", nullable = false)
 	@NotNull
 	private AgeGroup ageGroup;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "login_provider_id")
-	@Column(name = "login_provider_id", nullable = false)
+	@JoinColumn(name = "login_provider_id", nullable = false)
 	@NotNull
 	private LoginProvider loginProvider;
 }

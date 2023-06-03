@@ -14,13 +14,13 @@ package vessel.gamtori.domain.entity;
 public enum AgeGroupType {
 	TEN("10대"), TWENTY("20대"), THIRTY("30대"), FORTY("40대"), FIFTY("50대"), OVER_SIXTY("60대 이상");
 
-	private String age;
+	private String description;
 
-	AgeGroupType(String age) {
-		this.age = age;
+	AgeGroupType(String description) {
+		this.description = description;
 	}
 
-	public String getAge() {
-		return age;
+	public String getDescription() {
+		return description;
 	}
 }
