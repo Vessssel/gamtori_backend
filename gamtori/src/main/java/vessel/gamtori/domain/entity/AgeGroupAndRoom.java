@@ -1,9 +1,13 @@
 package vessel.gamtori.domain.entity;
 
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
+
+import com.sun.istack.NotNull;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -29,6 +33,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @Table(name = "user")
 @DynamicUpdate
-public class AgeRroupAndRoom extends BaseTimeEntity {
+public class AgeGroupAndRoom extends BaseTimeEntity {
 
+	@NotNull
+	@EmbeddedId
+	private AgeGroupAndRoomId id;
+
+	@Column(name = "is_deleted", nullable = false)
+	private boolean isDeleted;
 }

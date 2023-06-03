@@ -1,6 +1,7 @@
 package vessel.gamtori.domain.entity;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -32,6 +33,8 @@ import lombok.NoArgsConstructor;
 @DynamicUpdate
 public class UserAndCategory extends BaseTimeEntity {
 
-	@Column
+	@EmbeddedId
+	private UserAndCategoryId id;
+	@Column(nullable = false)
 	private boolean isDeleted;
 }
