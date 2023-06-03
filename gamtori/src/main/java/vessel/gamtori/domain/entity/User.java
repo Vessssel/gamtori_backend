@@ -4,12 +4,17 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
+
+import com.sun.istack.NotNull;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -38,24 +43,64 @@ import lombok.NoArgsConstructor;
 public class User extends BaseTimeEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "id", nullable = false)
 	private long id;
 
-	String email;
+	@NotNull
+	@Column(name = "email", length = 255, nullable = false)
+	private String email;
 
-	String password;
+	@NotNull
+	@Column(name = "password", length = 255, nullable = true) //oauth를 할 때의 로그인은 비밀번호가 없다.
+	private String password;
 
-	String nickname;
+	@NotNull
+	@Column(name = "nickname", length = 255, nullable = false)
+	private String nickname;
 
-	String phoneNumber;
+	@NotNull
+	@Column(name = "phone_number", length = 16, nullable = true)
+	private String phoneNumber;
 
-	String profileUrl;
+	@NotNull
+	@Column(name = "profileUrl", length = 255, nullable = false)
+	private String profileUrl;
 
-	String gender;
+	@NotNull
+	@Column(name = "gender", length = 16, nullable = false)
+	private String gender;
 
-	int mannerScore;
+	@Column(name = "manner_score", nullable = false)
+	private int mannerScore;
 
-	boolean isDeleted;
+	@Column(name = "is_delete", nullable = false)
+	private boolean isDeleted;
 
-	LocalDateTime lastLoginTime;
+	@NotNull
+	@Column(name = "last_login_time", nullable = false)
+	private LocalDateTime lastLoginTime;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "manner_score_image_id")
+	@Column(name = "manner_score_image", nullable = false)
+	@NotNull
+	private MannerScoreImage mannerScoreImage;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "address_id")
+	@Column(name = "address", nullable = false)
+	@NotNull
+	private Address address;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "age_group_id")
+	@Column(name = "age_group", nullable = false)
+	@NotNull
+	private AgeGroup ageGroup;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "login_provider_id")
+	@Column(name = "login_provider_id", nullable = false)
+	@NotNull
+	private LoginProvider loginProvider;
 }

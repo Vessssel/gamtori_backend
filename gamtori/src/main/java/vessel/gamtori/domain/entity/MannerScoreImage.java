@@ -1,6 +1,10 @@
 package vessel.gamtori.domain.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
@@ -30,5 +34,14 @@ import lombok.NoArgsConstructor;
 @Table(name = "user")
 @DynamicUpdate
 public class MannerScoreImage extends BaseTimeEntity {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false)
+	private long id;
 
+	@Column(name = "score", nullable = false)
+	private int score;
+
+	@Column(name = "is_delete", nullable = false)
+	private boolean isDeleted;
 }
