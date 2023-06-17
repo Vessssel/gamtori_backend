@@ -53,7 +53,7 @@ public class Address extends BaseTimeEntity {
 	@NotNull
 	private String dong;
 
-	@Column(name="code", length = 16, nullable = false, columnDefinition = "CHAR")
+	@Column(name="code", nullable = false, columnDefinition = "CHAR(16)")
 	@NotNull
 	private String code;
 
